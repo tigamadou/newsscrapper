@@ -1,3 +1,10 @@
 #!/usr/bin/env ruby
 
-puts "Hello world!"
+require_relative "./../lib/scrapper.rb"
+require 'byebug'
+puts "Welcome de ALiexScrapper"
+puts "Type your search words"
+# words = gets.chomp().to_s
+words = "voitures enfants"
+puts "Searching for: #{words}"
+scrapper = Scrapper.new(words)
