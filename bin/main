@@ -19,9 +19,8 @@ def scrap_from_buzzfeed
   end
   puts "#{scrapper.get_count} elements Scrapped"
 
-    puts "Saving   data..."
-    scrapper.save_to_file
-    puts "Data saved to #{scrapper.filename}"
-
+  puts "Saving   data..."
+  scrapper.save_to_file
+  puts "Data saved to #{scrapper.filename}"
 end
 scrap_from_buzzfeed

@@ -6,7 +6,7 @@ require 'json'
 require 'date'
 
 class Scrapper
-  attr_accessor :url, :filename, :PAGES, :scraping, :parsing,:new_elements
+  attr_accessor :url, :filename, :PAGES, :scraping, :parsing, :new_elements
   attr_reader :count, :elements
   PAGES = {
     list: Array.new,
@@ -17,7 +17,7 @@ class Scrapper
     total: nil
   }
   ELEMENTS = []
-  
+
   @filename = 'default.json'
   @selector = ''
   @parsing = true
@@ -60,9 +60,8 @@ class Scrapper
       element = build_element(article)
       if is_new_element?(element[:link])
         ELEMENTS << element
-        
+
       end
-      
     end
   end
 
