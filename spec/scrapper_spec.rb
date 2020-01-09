@@ -19,6 +19,13 @@ RSpec.describe Scrapper do
     end
   end
 
+	describe "#get_filename" do
+    let(:scrapper) { Scrapper.new("https://www.buzzfeed.com") }
+    it "return the file name to save the scraped data" do
+      expect(scrapper.get_filename).to eql("default.json")
+    end
+
+    
   
 
   
