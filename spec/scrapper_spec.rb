@@ -50,10 +50,15 @@ RSpec.describe Scrapper do
 
   describe "#build" do
     let(:scrapper) { Scrapper.new("https://www.buzzfeed.com") }
-    it "return array if the page has been build" do
+    it "return numéric if the page has been build" do
       scrapper.scrap_page("https://www.buzzfeed.com")
       scrapper.selector = "article.story-card"
-      expect(scrapper.build).be an_instance_of(Array)
+      expect(scrapper.build).to be_an(Numeric)
+		end
+		
+		it "return 0 if the page has can't be build" do
+      scrapper.scrap_page("https://www.buzzfeed.com")      
+      expect(scrapper.build).to eql(0)
     end
 	end
     

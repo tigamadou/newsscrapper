@@ -22,7 +22,7 @@ class Scrapper
     @url = url
     @new_elements = 0
     @filename = 'default.json'
-    @selector = ''
+    @selector = '.default-selector'
     @parsing = true
   end
 
@@ -76,8 +76,8 @@ class Scrapper
 
       end
     end
-    byebug
-    return list
+    
+    return list.count
   end
 
   def build_element(element)
