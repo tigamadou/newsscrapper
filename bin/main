@@ -5,6 +5,15 @@ require 'byebug'
 puts "Welcome de ALiexScrapper"
 puts "Type your search words"
 # words = gets.chomp().to_s
-words = "voitures enfants"
-puts "Searching for: #{words}"
-scrapper = Scrapper.new(words)
+#words = "Iran"
+#puts "Searching for: #{words}"
+puts "Initialize Scrapper for BuzzFeed.com"
+scrapper = Buzzfeed.new
+puts "Scrapping from #{scrapper.get_url}"
+scrapper.scrap_all(scrapper.get_url)
+puts "Bulding scrapped data"
+scrapper.build
+puts "#{scrapper.get_count} scrapped"
+puts "Saving data..."
+scrapper.save_to_file
+puts "Data saved to #{scrapper.get_filename}"
