@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative "./../lib/scrapper.rb"
+require_relative "./../lib/buzzfeed.rb"
 require 'byebug'
 puts "Welcome de ALiexScrapper"
 puts "Type your search words"
@@ -17,3 +17,19 @@ puts "#{scrapper.get_count} scrapped"
 puts "Saving data..."
 scrapper.save_to_file
 puts "Data saved to #{scrapper.get_filename}"
+buzzfeedPages = Array.new
+buzzfeedPages << "https://www.buzzfeed.com/buzz"
+buzzfeedPages << "https://www.buzzfeed.com/celebrity"
+buzzfeedPages << "https://www.buzzfeed.com/community"
+buzzfeedPages << "https://www.buzzfeed.com/entertainment"
+buzzfeedPages << "https://www.buzzfeed.com/food"
+buzzfeedPages << "https://www.buzzfeed.com/life"
+buzzfeedPages << "https://www.buzzfeed.com/music"
+buzzfeedPages << "https://www.buzzfeed.com/nifty"
+buzzfeedPages << "https://www.buzzfeed.com/parents"
+buzzfeedPages << "https://www.buzzfeed.com/quizzes"
+buzzfeedPages << "https://www.buzzfeed.com/rewind"
+buzzfeedPages << "https://www.buzzfeed.com/shopping"
+buzzfeedPages << "https://www.buzzfeed.com/style"
+buzzfeedPages << "https://www.buzzfeed.com/tvandmovies"
+buzzfeedPages << "https://www.buzzfeed.com/weddings"
