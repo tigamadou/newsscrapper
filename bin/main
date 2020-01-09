@@ -6,20 +6,22 @@ require 'byebug'
 puts "Welcome de NewsScrapper"
 
 def scrap_from_buzzfeed
-    puts "Initialize Scrapper for BuzzFeed.com"
-    scrapper = Buzzfeed.new("https://www.buzzfeed.com/")
+  puts "Initialize Scrapper for BuzzFeed.com"
+  scrapper = Buzzfeed.new("https://www.buzzfeed.com/")
 
-    while scrapper.is_parsing?
-        puts "Scrapping from #{scrapper.url}"    
-        scrapper.scrap_page(scrapper.url)
-        puts "Bulding scrapped data"
-        scrapper.build
-        puts "#{scrapper.count} scrapped"
-        scrapper.next_page
-    end
-    puts "#{scrapper.get_count} elements Scrapped"
-    puts "Saving data..."
+  while scrapper.is_parsing?
+    puts "Scrapping from #{scrapper.url}"
+    scrapper.scrap_page(scrapper.url)
+    puts "Bulding scrapped data"
+    scrapper.build
+    puts "#{scrapper.count} scrapped"
+    scrapper.next_page
+  end
+  puts "#{scrapper.get_count} elements Scrapped"
+
+    puts "Saving   data..."
     scrapper.save_to_file
     puts "Data saved to #{scrapper.filename}"
+
 end
 scrap_from_buzzfeed
