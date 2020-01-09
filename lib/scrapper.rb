@@ -6,61 +6,101 @@ require 'json'
 require 'date'
 
 class Scrapper
-  attr_accessor :request,:yahoo,:url
-  def initialize(search_query=nil)
-    @search_query = search_query.to_s if !search_query.nil?
+  attr_accessor :url, :filename, :PAGES, :scraping, :parsing, :elements
+  attr_reader :count
+  PAGES = {
+    list: Array.new,
+    parsed: Array.new,
+    current: nil,
+    previous: nil,
+    next:nil,
+    total: nil
+  }
+  ELEMENTS= Array.new
+  def initialize(url)
+    @url = url
+    add_page(@url)
     @filename = "default.json"
-    @selector=""
-    @ressource = {}    
-    @params = {}    
+    @selector = ""
+    @parsing = true
+    load_file
   end
 
-  def search(search_query = nil)
-    @search_query = search_query if !search_query.nil?
-    @search_query = @search_query.gsub(" ", "+")
-    @search_query = URI.encode(@search_query)
-    @url = "#{@base_url}search/site/#{@search_query}"
-    #@params.each do |k,v|
-    #  @url += "&#{k}=#{v}"
-    #end    
+  def load_file
+    @file = File.open("data/#{@filename}","a+")
+    @elements = JSON.load @file
+    print @elements
+    byebug
   end
-  def get_url
-    @url
+
+  def close_file
+    @file.close
   end
-  def get_count
-    @count
+
+  def is_new_element?(url)
   end
+   
+
+  def add_page(url)
+    PAGES[:list] << url
+  end
+
   def get_filename
     @filename
   end
-  def scrap_all(url)    
-    @data = Nokogiri::HTML(HTTParty.get(url))   
+
+  def scrap_page(url)
+    @data = Nokogiri::HTML(HTTParty.get(url))
+  end
+
+  def next_page
+    if PAGES[:current].nil?
+      PAGES[:current] = PAGES[:list][0]
+      
+    elsif
+      PAGES[:previous]= @url
+      PAGES[:current] = PAGES[:next]
+      
+    
+    end
+    PAGES[:parsed] << @url
+    PAGES[:next] = PAGES[:list][(PAGES[:list].index(PAGES[:current]))+1]
+    @url = PAGES[:current]
+    puts @url = PAGES[:current]
+    
   end
 
   def build
-    @elements = Array.new
+    
     list =@data.css(@selector)
     @count = list.count
     list.each do |article|
       element = build_element(article)      
-      @elements << element      
-    end
-    
-    save_to_file
-    #byebug
+      ELEMENTS << element      
+    end  
   end
 
   def build_element(element)
-    {
-        
-      }
+    {}
   end
 
   def save_to_file
-    File.open("data/#{@filename}","w") do |f|
-      f.write(JSON.pretty_generate(@elements))
+    @file.each do |f|
+      f.write(JSON.pretty_generate(ELEMENTS))
     end
   end
 
+  def is_parsing?
+    return false if PAGES[:list].count == PAGES[:parsed].count
+    true
+  end
+
+  def is_next_page?
+    @parsing = false if PAGES[:list].count == PAGES[:parsed].count
+  end
+
+  def get_count
+    return ELEMENTS.count
+  end
 end
 
