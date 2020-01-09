@@ -6,7 +6,7 @@ require 'json'
 require 'date'
 
 class Scrapper
-  attr_accessor :url, :filename, :PAGES, :scraping, :parsing, :new_elements
+  attr_accessor :url, :filename, :PAGES, :scraping, :parsing, :new_elements, :selector
   attr_reader :count, :elements
   PAGES = {
     list: Array.new,
@@ -18,30 +18,40 @@ class Scrapper
   }
   ELEMENTS = []
 
-  @filename = 'default.json'
-  @selector = ''
-  @parsing = true
   def initialize(url)
     @url = url
     @new_elements = 0
+    @filename = 'default.json'
+    @selector = ''
+    @parsing = true
   end
 
   def add_page(url)
+    return false if PAGES[:list].include?(url)
+
     PAGES[:list] << url
+    return true
   end
 
   def get_filename
-    @filename
+    return @filename if !@filename.nil?
+
+    return false
   end
 
   def scrap_page(url)
-    @data = Nokogiri::HTML(HTTParty.get(url))
+    request = HTTParty.get(url)
+    if request.code == 200
+      @data = Nokogiri::HTML(request)
+      return true
+    end
+
+    return false
   end
 
   def next_page
     if PAGES[:current].nil?
       PAGES[:current] = PAGES[:list][0]
-
     else
       PAGES[:previous] = @url
       PAGES[:current] = PAGES[:next]
@@ -50,7 +60,10 @@ class Scrapper
     PAGES[:parsed] << @url
     PAGES[:next] = PAGES[:list][(PAGES[:list].index(PAGES[:current])) + 1]
     @url = PAGES[:current]
-    puts @url = PAGES[:current]
+
+    return true if !PAGES[:next].nil?
+
+    return false
   end
 
   def build
@@ -63,6 +76,8 @@ class Scrapper
 
       end
     end
+    byebug
+    return list
   end
 
   def build_element(element)
