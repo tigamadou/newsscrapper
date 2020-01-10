@@ -1,11 +1,6 @@
 # News Web Scrapper
 A Simple Web Scraper
 
-![GitHub contributors](https://img.shields.io/github/contributors/genzaraki/newsscrapper)
-![GitHub forks](https://img.shields.io/github/forks/genzaraki/newsscrapper)
-![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/b/genzaraki/newsscrapper?style=flat-square)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/genzaraki/newsscrapper)
-
 # Project Name
 
 > Scrap News from **BuzzFeed** pages.
@@ -13,6 +8,12 @@ A Simple Web Scraper
 ![screenshot](./app_screenshot.png)
 
 Additional description about the project and its features.
+
+## Status 
+![GitHub contributors](https://img.shields.io/github/contributors/genzaraki/newsscrapper)
+![GitHub forks](https://img.shields.io/github/forks/genzaraki/newsscrapper)
+![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/b/genzaraki/newsscrapper?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/genzaraki/newsscrapper)
 
 ## Built With
 The project was developed using the following technologies:
