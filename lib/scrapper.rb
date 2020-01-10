@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "nokogiri"
 require 'httparty'
 require 'byebug'
@@ -95,10 +96,6 @@ class Scrapper
     return false if PAGES[:list].count == PAGES[:parsed].count
 
     true
-  end
-
-  def is_next_page?
-    @parsing = false if PAGES[:list].count == PAGES[:parsed].count
   end
 
   def is_new_element?(url)

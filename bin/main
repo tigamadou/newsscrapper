@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
-
 require_relative "./../lib/buzzfeed.rb"
 require 'byebug'
-
 puts "Welcome de NewsScrapper"
 
 def scrap_from_buzzfeed
