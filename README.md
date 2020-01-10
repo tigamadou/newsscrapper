@@ -2,10 +2,11 @@
 A Simple Web Scraper
 
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
+![GitHub forks](https://img.shields.io/github/forks/genzaraki/newsscrapper)
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-
+![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/b/genzaraki/newsscrapper?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/genzaraki/newsscrapper)
 
 # Project Name
 
@@ -16,10 +17,9 @@ A Simple Web Scraper
 Additional description about the project and its features.
 
 ## Built With
+The project was developed using the following technologies:
 
-- Ruby,
-- ,
-- technologies used
+- Ruby
 
 ## Live Demo
 
@@ -77,13 +77,6 @@ This project is [MIT](lic.url) licensed.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/genzaraki/newsscrapper/contributors
-[forks-shield]: https://github.com/genzaraki/newsscrapper
-[forks-url]: https://img.shields.io/github/forks/genzaraki/newsscrapper/network/members
-[stars-shield]: https://img.shields.io/github/stars/genzaraki/newsscrapper
-[stars-url]: https://github.com/genzaraki/newsscrapper/stargazers
-[issues-shield]: https://img.shields.io/github/issues/genzaraki/newsscrapper
-[issues-url]: https://github.com/genzaraki/newsscrapper/issues
+
 
 
