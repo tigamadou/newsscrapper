@@ -93,6 +93,5 @@ Give a ⭐️ if you like this project!
 - [Vscode](https://code.visualstudio.com/)
 - [Ubuntu](https://ubuntu.com/)
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
