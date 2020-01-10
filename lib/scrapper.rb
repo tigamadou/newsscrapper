@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "nokogiri"
+require 'nokogiri'
 require 'httparty'
 require 'byebug'
 require 'json'
@@ -10,8 +10,8 @@ class Scrapper
   attr_accessor :url, :filename, :PAGES, :scraping, :parsing, :new_elements, :selector
   attr_reader :count, :elements
   PAGES = {
-    list: Array.new,
-    parsed: Array.new,
+    list: [],
+    parsed: [],
     current: nil,
     previous: nil,
     next: nil,
@@ -31,13 +31,13 @@ class Scrapper
     return false if PAGES[:list].include?(url)
 
     PAGES[:list] << url
-    return true
+    true
   end
 
   def get_filename
-    return @filename if !@filename.nil?
+    return @filename unless @filename.nil?
 
-    return false
+    false
   end
 
   def scrap_page(url)
@@ -47,7 +47,7 @@ class Scrapper
       return true
     end
 
-    return false
+    false
   end
 
   def next_page
@@ -59,12 +59,12 @@ class Scrapper
 
     end
     PAGES[:parsed] << @url
-    PAGES[:next] = PAGES[:list][(PAGES[:list].index(PAGES[:current])) + 1]
+    PAGES[:next] = PAGES[:list][PAGES[:list].index(PAGES[:current]) + 1]
     @url = PAGES[:current]
 
-    return true if !PAGES[:next].nil?
+    return true unless PAGES[:next].nil?
 
-    return false
+    false
   end
 
   def build
@@ -72,12 +72,11 @@ class Scrapper
     @count = @list.count
     @list.each do |article|
       element = build_element(article)
-      if is_new_element?(element[:link])
-        ELEMENTS << element
-
-      end
+      ELEMENTS << element if new_element?(element[:link])
+        
+      
     end
-    return @list.count
+    @list.count
   end
 
   def build_element(element)
@@ -92,13 +91,13 @@ class Scrapper
     false
   end
 
-  def is_parsing?
+  def parsing?
     return false if PAGES[:list].count == PAGES[:parsed].count
 
     true
   end
 
-  def is_new_element?(url)
+  def new_element?(url)
     !ELEMENTS.any? { |k| k[:link] == url }
   end
 
