@@ -1,11 +1,9 @@
 # News Web Scrapper
 A Simple Web Scraper
 
-# Project Name
+
 
 > Scrap News from **BuzzFeed** pages.
-
-![screenshot](./app_screenshot.png)
 
 
 ## Status 
@@ -21,40 +19,64 @@ The project was developed using the following technologies:
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://github.com/genzaraki/newsscrapper)
 
+## Features
+- Scrap News from **Buzzfeed.com**
+- Scrap News from **9 Pages**
+- Save the data in a json file
 
 ## Getting Started
 
 To get a local copy up and running, you'll first need to clone the repos.
-### Clone with ssh
+### Clone 
+**With SSh**
+
     git clone git@github.com:genzaraki/newsscrapper.git
-### Clone with https
+    
+**With https**
+
     git clone https://github.com/genzaraki/newsscrapper.git
 
-### Prerequisites
+### Requirements
 
-### Setup
+- [x] Ruby 2.3.0 or higher
+
+### Dependencies
+- [x] [Nokogiri](https://nokogiri.org/)
+- [x] [HTTparty](https://github.com/jnunemaker/httparty/)
+- [x] [RSpec](https://rspec.info/)
 
 ### Install
+Once cloned, browser to the repo folder and install the required gems:
+
+    $ cd newsscrapper
+    $ bundle install
+  
 
 ### Usage
+To run the web scraper, do the following steps
+Browse to the repo folder:
+    
+    $ cd newsscrapper
+      
+
+Execute the command
+    
+    $ ./bin/main
 
 ### Run tests
-
-### Deployment
-
-
+To run the test, execute the following command in your console
+    
+    rspec
 
 ## Authors
 
 👤 **Author1**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
-
-👤 **Author2**
+- Github: [@genzaraki](https://github.com/genzaraki)
+- Twitter: [@tigamadou](https://twitter.com/tigamadou)
+- Linkedin: [@amadou-ibrahim](https://www.linkedin.com/in/amadou-ibrahim-75769167/)
 
 ## 🤝 Contributing
 
@@ -68,17 +90,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 * [Microverse](https://www.microverse.org/)
-- HTTParty
-- Nokogiri
-- 
-
-## 📝 License
-
-This project is [MIT](lic.url) licensed.
+- [Vscode](https://code.visualstudio.com/)
+- [Ubuntu](https://ubuntu.com/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-
-
