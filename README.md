@@ -7,7 +7,6 @@ A Simple Web Scraper
 
 ![screenshot](./app_screenshot.png)
 
-Additional description about the project and its features.
 
 ## Status 
 ![GitHub contributors](https://img.shields.io/github/contributors/genzaraki/newsscrapper)
@@ -27,7 +26,11 @@ The project was developed using the following technologies:
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, you'll first need to clone the repos.
+### Clone with ssh
+    git clone git@github.com:genzaraki/newsscrapper.git
+### Clone with https
+    git clone https://github.com/genzaraki/newsscrapper.git
 
 ### Prerequisites
 
