@@ -5,7 +5,7 @@ require 'httparty'
 require 'byebug'
 require 'json'
 require 'date'
-
+# scrapper class
 class Scrapper
   attr_accessor :url, :filename, :PAGES, :scraping, :parsing, :new_elements, :selector
   attr_reader :count, :elements
@@ -34,7 +34,7 @@ class Scrapper
     true
   end
 
-  def get_filename
+  def filename?
     return @filename unless @filename.nil?
 
     false
@@ -56,12 +56,10 @@ class Scrapper
     else
       PAGES[:previous] = @url
       PAGES[:current] = PAGES[:next]
-
     end
     PAGES[:parsed] << @url
     PAGES[:next] = PAGES[:list][PAGES[:list].index(PAGES[:current]) + 1]
     @url = PAGES[:current]
-
     return true unless PAGES[:next].nil?
 
     false
@@ -73,8 +71,6 @@ class Scrapper
     @list.each do |article|
       element = build_element(article)
       ELEMENTS << element if new_element?(element[:link])
-        
-      
     end
     @list.count
   end

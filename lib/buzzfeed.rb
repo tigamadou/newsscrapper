@@ -1,21 +1,15 @@
 # frozen_string_literal: true
 
 require_relative './scrapper'
-
+# Buzzfeed class
 class Buzzfeed < Scrapper
   def initialize(url)
     @url = url
     @filename = 'buzzfeed.json'
     @selector = 'article.story-card'
     @categories = %w[
-      Buzz,
-      Celebrity,
-      Community,
-      Entertainment,
-      Food,Life,
-      Music,
-      Nifty,
-      Parents
+      Buzz Celebrity Community Entertainment
+      Food Life Music Nifty Parents
     ]
     @new_elements = 0
     @categories.each do |x|
