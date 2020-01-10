@@ -2,7 +2,6 @@
 require "nokogiri"
 require 'httparty'
 require 'byebug'
-require 'uri'
 require 'json'
 require 'date'
 
