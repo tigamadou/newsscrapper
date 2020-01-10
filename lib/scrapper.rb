@@ -81,24 +81,24 @@ class Scrapper
 
   def build_element(element)
     {}
-        
   end
 
   def save_to_file
-    return true if  File.open("data/#{@filename}", "w") do |f|
+    return true if File.open("data/#{@filename}", "w") do |f|
       f.write(JSON.pretty_generate(ELEMENTS))
     end
-    false    
+
+    false
   end
 
   def is_parsing?
     return false if PAGES[:list].count == PAGES[:parsed].count
+
     true
   end
 
   def is_next_page?
     @parsing = false if PAGES[:list].count == PAGES[:parsed].count
-    byebug
   end
 
   def is_new_element?(url)
