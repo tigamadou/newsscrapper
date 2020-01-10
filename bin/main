@@ -19,6 +19,6 @@ def scrap_from_buzzfeed
 
   puts "Saving   data..."
   scrapper.save_to_file
-  puts "Data saved to #{scrapper.filename}"
+  puts "Data saved to data/#{scrapper.filename}"
 end
 scrap_from_buzzfeed
