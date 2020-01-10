@@ -61,6 +61,27 @@ RSpec.describe Scrapper do
       expect(scrapper.build).to eql(0)
     end
 	end
+
+	
+	describe "#save_to_file" do
+		let(:scrapper) { Scrapper.new("https://www.buzzfeed.com") }
+		it "return true if the file name is saved " do
+			scrapper.scrap_page("https://www.buzzfeed.com")
+			scrapper.selector = "article.story-card"
+			expect(scrapper.save_to_file).to eql(true)
+		end
+	end
+
+	describe "#is_parsing?" do
+		let(:scrapper) { Scrapper.new("https://www.buzzfeed.com") }
+		it "return false if there are no page to parse" do
+			expect(scrapper.is_parsing?).to be_falsey
+		end
+		it "return true if there are  page to parse" do
+			scrapper.add_page("https://www.buzzfeed.com/buzz")
+			expect(scrapper.is_parsing?).to be_truthy
+		end
+	end
     
   
 

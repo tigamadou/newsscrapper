@@ -2,7 +2,6 @@ require_relative './scrapper'
 class Buzzfeed < Scrapper
   def initialize(url)
     @url = url
-
     @filename = "buzzfeed.json"
     @selector = "article.story-card"
     @categories = ["Buzz", "Celebrity", "Community", "Entertainment", "Food", "Life", "Music", "Nifty", "Parents"]

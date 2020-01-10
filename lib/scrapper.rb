@@ -67,37 +67,38 @@ class Scrapper
   end
 
   def build
-    list = @data.css(@selector)
-    @count = list.count
-    list.each do |article|
+    @list = @data.css(@selector)
+    @count = @list.count
+    @list.each do |article|
       element = build_element(article)
       if is_new_element?(element[:link])
         ELEMENTS << element
 
       end
     end
-    
-    return list.count
+    return @list.count
   end
 
   def build_element(element)
     {}
+        
   end
 
   def save_to_file
-    File.open("data/#{@filename}", "w") do |f|
+    return true if  File.open("data/#{@filename}", "w") do |f|
       f.write(JSON.pretty_generate(ELEMENTS))
     end
+    false    
   end
 
   def is_parsing?
     return false if PAGES[:list].count == PAGES[:parsed].count
-
     true
   end
 
   def is_next_page?
     @parsing = false if PAGES[:list].count == PAGES[:parsed].count
+    byebug
   end
 
   def is_new_element?(url)
