@@ -21,6 +21,7 @@ class Scrapper
 
   def initialize(url)
     @url = url
+    add_page(url)
     @new_elements = 0
     @filename = 'default.json'
     @selector = '.default-selector'
@@ -50,6 +51,10 @@ class Scrapper
     false
   end
 
+  def get_index(url)
+    PAGES[:list].index { |v| v == url }
+  end
+
   def next_page
     if PAGES[:current].nil?
       PAGES[:current] = PAGES[:list][0]
@@ -57,8 +62,10 @@ class Scrapper
       PAGES[:previous] = @url
       PAGES[:current] = PAGES[:next]
     end
+
     PAGES[:parsed] << @url
-    PAGES[:next] = PAGES[:list][PAGES[:list].index(PAGES[:current]) + 1]
+    index = get_index(PAGES[:current])
+    PAGES[:next] = PAGES[:list][index + 1]
     @url = PAGES[:current]
     return true unless PAGES[:next].nil?
 
@@ -75,12 +82,12 @@ class Scrapper
     @list.count
   end
 
-  def build_element(element)
+  def build_element(_element)
     {}
   end
 
   def save_to_file
-    return true if File.open("data/#{@filename}", "w") do |f|
+    return true if File.open("data/#{@filename}", 'w') do |f|
       f.write(JSON.pretty_generate(ELEMENTS))
     end
 
@@ -94,10 +101,10 @@ class Scrapper
   end
 
   def new_element?(url)
-    !ELEMENTS.any? { |k| k[:link] == url }
+    ELEMENTS.none? { |k| k[:link] == url }
   end
 
-  def get_count
-    return ELEMENTS.count
+  def count?
+    ELEMENTS.count
   end
 end

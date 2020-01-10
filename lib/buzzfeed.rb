@@ -5,6 +5,7 @@ require_relative './scrapper'
 class Buzzfeed < Scrapper
   def initialize(url)
     @url = url
+    add_page(url)
     @filename = 'buzzfeed.json'
     @selector = 'article.story-card'
     @categories = %w[
@@ -16,6 +17,11 @@ class Buzzfeed < Scrapper
       url = "#{@url}#{x.downcase}"
       add_page(url)
     end
+    @pages = {
+      list: [], parsed: [],
+      cr: nil, previous: nil,
+      next: nil, total: nil
+    }
   end
 
   def build_element(element)
