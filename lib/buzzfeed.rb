@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+
+require_relative './scrapper'
+# Buzzfeed class
+class Buzzfeed < Scrapper
+  def initialize(url)
+    @url = url
+    add_page(url)
+    @filename = 'buzzfeed.json'
+    @selector = 'article.story-card'
+    @categories = %w[
+      Buzz Celebrity Community Entertainment
+      Food Life Music Nifty Parents
+    ]
+    @new_elements = 0
+    @categories.each do |x|
+      url = "#{@url}#{x.downcase}"
+      add_page(url)
+    end
+    @pages = {
+      list: [], parsed: [],
+      cr: nil, previous: nil,
+      next: nil, total: nil
+    }
+  end
+
+  def build_element(element)
+    {
+      title: element.css('a.js-card__link').text,
+      link: element.css('a')[0].attributes['href'].value,
+      excerpt: element.css('p.js-card__description').text,
+      cover: element.css('.card__image img').attr('src'),
+      source: 'https://www.buzzfeed.com',
+      scraped_at: DateTime.now
+    }
+  end
+end
