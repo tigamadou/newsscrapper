@@ -1,10 +1,8 @@
 # News Web Scrapper
 A Simple Web Scraper
 
-[![Contributors][contributors-shield]][contributors-url]
+![GitHub contributors](https://img.shields.io/github/contributors/genzaraki/newsscrapper)
 ![GitHub forks](https://img.shields.io/github/forks/genzaraki/newsscrapper)
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 ![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/b/genzaraki/newsscrapper?style=flat-square)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/genzaraki/newsscrapper)
 
