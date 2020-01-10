@@ -65,7 +65,7 @@ Feel free to check the [issues page](issues/).
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
+* [Microverse](https://www.microverse.org/)
 - HTTParty
 - Nokogiri
 - 
@@ -80,10 +80,10 @@ This project is [MIT](lic.url) licensed.
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
 [contributors-url]: https://github.com/genzaraki/newsscrapper/contributors
 [forks-shield]: https://github.com/genzaraki/newsscrapper
-[forks-url]: https://github.com/genzaraki/newsscrapper/network/members
-[stars-shield]: https://github.com/genzaraki/newsscrapper
+[forks-url]: https://img.shields.io/github/forks/genzaraki/newsscrapper/network/members
+[stars-shield]: https://img.shields.io/github/stars/genzaraki/newsscrapper
 [stars-url]: https://github.com/genzaraki/newsscrapper/stargazers
-[issues-shield]: https://github.com/genzaraki/newsscrapper
+[issues-shield]: https://img.shields.io/github/issues/genzaraki/newsscrapper
 [issues-url]: https://github.com/genzaraki/newsscrapper/issues
 
 
