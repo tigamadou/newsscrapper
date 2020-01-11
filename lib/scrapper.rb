@@ -7,31 +7,58 @@ require 'json'
 require 'date'
 # scrapper class
 class Scrapper
-  attr_accessor :url, :filename, :PAGES, :scraping, :parsing, :new_elements, :selector
+  attr_accessor :url, :filename, :scraping, :parsing, :selector
   attr_reader :count, :elements
-  PAGES = {
-    list: [],
-    parsed: [],
-    current: nil,
-    previous: nil,
-    next: nil,
-    total: nil
-  }
-  ELEMENTS = []
+  
+  
 
-  def initialize(url)
-    @url = url
-    add_page(url)
-    @new_elements = 0
+  def initialize
+    @url = nil
+    @filename = nil
+    @selector = nil
+    @parsing = true
+    @pages = {
+      list: [],
+      parsed: [],
+      current: nil,
+      previous: nil,
+      next: nil,
+      total: nil
+    }
+    @pages_list = []
+    @pages_parsed=[]
+    @page_current=nil
+    @@page_previous=nil
+    @page_next=nil
+    @page_total=nil
+    @elements = []
+  end
+
+  private
+
+  def new_element?(url)
+    @elements.none? { |k| k[:link] == url }
+  end
+
+  def build_element(_element)
+    {}
+  end
+
+  public
+
+  def set_up(url)
+    @url =url
+    add_page(@url)
     @filename = 'default.json'
     @selector = '.default-selector'
-    @parsing = true
+    true
   end
 
   def add_page(url)
-    return false if PAGES[:list].include?(url)
+    
+    return false if @pages_list.include?(url)
 
-    PAGES[:list] << url
+    @pages_list << url
     true
   end
 
@@ -52,22 +79,20 @@ class Scrapper
   end
 
   def get_index(url)
-    PAGES[:list].index { |v| v == url }
+    @pages_list.index { |v| v == url }
   end
 
   def next_page
-    if PAGES[:current].nil?
-      PAGES[:current] = PAGES[:list][0]
-    else
-      PAGES[:previous] = @url
-      PAGES[:current] = PAGES[:next]
+    if @pages_list.nil?
+      @url = @pages_list[0]         
     end
-
-    PAGES[:parsed] << @url
-    index = get_index(PAGES[:current])
-    PAGES[:next] = PAGES[:list][index + 1]
-    @url = PAGES[:current]
-    return true unless PAGES[:next].nil?
+    @pages_parsed<< @url    
+    index = get_index(@url)    
+    @page_next = @pages_list[index + 1]
+    @page_previous = @url
+    @url = @page_next
+    
+    return true unless @page_next.nil?
 
     false
   end
@@ -77,34 +102,33 @@ class Scrapper
     @count = @list.count
     @list.each do |article|
       element = build_element(article)
-      ELEMENTS << element if new_element?(element[:link])
+      @elements << element if new_element?(element[:link])
     end
     @list.count
+    
   end
 
-  def build_element(_element)
-    {}
-  end
+  
 
   def save_to_file
+    
     return true if File.open("data/#{@filename}", 'w') do |f|
-      f.write(JSON.pretty_generate(ELEMENTS))
+      f.write(JSON.pretty_generate(@elements))
     end
 
     false
   end
 
   def parsing?
-    return false if PAGES[:list].count == PAGES[:parsed].count
-
+    
+    return false if @pages_list.count == @pages_parsed.count
+    
     true
   end
 
-  def new_element?(url)
-    ELEMENTS.none? { |k| k[:link] == url }
-  end
+  
 
   def count?
-    ELEMENTS.count
+    @elements.count
   end
 end
