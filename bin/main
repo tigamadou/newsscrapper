@@ -7,7 +7,7 @@ puts 'Welcome de NewsScrapper'
 def scrap
   puts 'Initialize Scrapper for BuzzFeed.com'
   scrapper = Buzzfeed.new
-  scrapper.set_up('https://www.buzzfeed.com/')
+  scrapper.setup('https://www.buzzfeed.com/')
   
   while scrapper.parsing?
     puts "Scrapping from #{scrapper.url}"

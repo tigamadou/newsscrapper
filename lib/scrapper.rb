@@ -9,8 +9,6 @@ require 'date'
 class Scrapper
   attr_accessor :url, :filename, :scraping, :parsing, :selector
   attr_reader :count, :elements
-  
-  
 
   def initialize
     @url = nil
@@ -26,11 +24,11 @@ class Scrapper
       total: nil
     }
     @pages_list = []
-    @pages_parsed=[]
-    @page_current=nil
-    @@page_previous=nil
-    @page_next=nil
-    @page_total=nil
+    @pages_parsed = []
+    @page_current = nil
+    @page_previous = nil
+    @page_next = nil
+    @page_total = nil
     @elements = []
   end
 
@@ -46,8 +44,8 @@ class Scrapper
 
   public
 
-  def set_up(url)
-    @url =url
+  def setup(url)
+    @url = url
     add_page(@url)
     @filename = 'default.json'
     @selector = '.default-selector'
@@ -55,7 +53,6 @@ class Scrapper
   end
 
   def add_page(url)
-    
     return false if @pages_list.include?(url)
 
     @pages_list << url
@@ -83,15 +80,13 @@ class Scrapper
   end
 
   def next_page
-    if @pages_list.nil?
-      @url = @pages_list[0]         
-    end
-    @pages_parsed<< @url    
-    index = get_index(@url)    
+    @url = @pages_list[0] if @pages_list.nil?
+    @pages_parsed << @url
+    index = get_index(@url)
     @page_next = @pages_list[index + 1]
     @page_previous = @url
     @url = @page_next
-    
+
     return true unless @page_next.nil?
 
     false
@@ -105,13 +100,9 @@ class Scrapper
       @elements << element if new_element?(element[:link])
     end
     @list.count
-    
   end
 
-  
-
   def save_to_file
-    
     return true if File.open("data/#{@filename}", 'w') do |f|
       f.write(JSON.pretty_generate(@elements))
     end
@@ -120,13 +111,10 @@ class Scrapper
   end
 
   def parsing?
-    
     return false if @pages_list.count == @pages_parsed.count
-    
+
     true
   end
-
-  
 
   def count?
     @elements.count

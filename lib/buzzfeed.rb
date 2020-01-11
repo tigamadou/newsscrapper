@@ -3,7 +3,7 @@
 require_relative './scrapper'
 # Buzzfeed class
 class Buzzfeed < Scrapper
-  def set_up(url)  
+  def setup(url)
     @url = url
     add_page(@url)
     @filename = 'buzzfeed.json'
@@ -16,7 +16,6 @@ class Buzzfeed < Scrapper
       url = "#{@url}#{x.downcase}"
       add_page(url)
     end
-    
   end
 
   def build_element(element)
