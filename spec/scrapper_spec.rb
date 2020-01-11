@@ -9,7 +9,16 @@ RSpec.describe Scrapper do
     end
   end
 
-  
+  describe '#set_up' do
+    let(:scrapper) { Scrapper.new }
+    it 'Set up the scrapper with the given url' do
+      expect(scrapper.set_up('https://www.buzzfeed.com')).to be_truthy
+    end
+
+    it 'Should raise error  if the url is not provide' do
+      expect{scrapper.set_up}.to raise_error(ArgumentError)
+    end
+  end
 
   describe '#add_page' do
     let(:scrapper) { Scrapper.new }
