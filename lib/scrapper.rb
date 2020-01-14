@@ -42,6 +42,10 @@ class Scrapper
     {}
   end
 
+  def get_index(url)
+    @pages_list.index { |v| v == url }
+  end
+
   public
 
   def setup(url)
@@ -59,12 +63,6 @@ class Scrapper
     true
   end
 
-  def filename?
-    return @filename unless @filename.nil?
-
-    false
-  end
-
   def scrap_page(url)
     request = HTTParty.get(url)
     if request.code == 200
@@ -73,10 +71,6 @@ class Scrapper
     end
 
     false
-  end
-
-  def get_index(url)
-    @pages_list.index { |v| v == url }
   end
 
   def next_page
