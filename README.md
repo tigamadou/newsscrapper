@@ -47,14 +47,14 @@ To get a local copy up and running, you'll first need to clone the repos.
 - [x] [HTTparty](https://github.com/jnunemaker/httparty/)
 - [x] [RSpec](https://rspec.info/)
 
-### Install
+## Install
 Once cloned, browser to the repo folder and install the required gems:
 
     $ cd newsscrapper
     $ bundle install
   
 
-### Usage
+## Run the code
 To run the web scraper, do the following steps
 Browse to the repo folder:
     
