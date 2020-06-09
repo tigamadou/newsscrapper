@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require_relative './../lib/buzzfeed.rb'
+require 'byebug'
+puts 'Welcome de NewsScrapper'
+
+def scrap
+  puts 'Initialize Scrapper for BuzzFeed.com'
+  scrapper = Buzzfeed.new
+  scrapper.setup('https://www.buzzfeed.com/')
+  
+  while scrapper.parsing?
+    puts "Scrapping from #{scrapper.url}"
+    scrapper.scrap_page(scrapper.url)
+    puts 'Bulding scrapped data'
+    scrapper.build
+    puts "#{scrapper.count} scrapped"
+    scrapper.next_page
+  end
+  puts "#{scrapper.count?} elements Scrapped"
+
+  puts 'Saving   data...'
+  scrapper.save_to_file
+  puts "Data saved to data/#{scrapper.filename}"
+end
+scrap
