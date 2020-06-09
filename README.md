@@ -1,25 +1,21 @@
 # News Web Scrapper
-A Simple Web Scraper
-
-
-
-> Scrap News from **BuzzFeed** pages.
-
-
 ## Status 
 ![GitHub contributors](https://img.shields.io/github/contributors/genzaraki/newsscrapper)
 ![GitHub forks](https://img.shields.io/github/forks/genzaraki/newsscrapper)
 ![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/b/genzaraki/newsscrapper?style=flat-square)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/genzaraki/newsscrapper)
 
+A Simple Web Scraper build with Ruby. This program scrape news BuzzFeed and save then in a json file.
+
+> Scrap News from **BuzzFeed** pages.
+![screenshot](./screenshot.png)
+
+
+
 ## Built With
 The project was developed using the following technologies:
 
 - Ruby
-
-## Live Demo
-
-[Live Demo Link](https://github.com/genzaraki/newsscrapper)
 
 ## Features
 - Scrap News from **Buzzfeed.com**
