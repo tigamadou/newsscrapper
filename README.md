@@ -22,6 +22,9 @@ The project was developed using the following technologies:
 - Scrap News from **9 Pages**
 - Save the data in a json file
 
+## Future features
+- Scrape news from Yahoo News
+
 ## Getting Started
 
 To get a local copy up and running, you'll first need to clone the repos.
